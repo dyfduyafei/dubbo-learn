@@ -9,17 +9,18 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dubbo-spring-boot</artifactId>
+    <artifactId>dubbo-spring-boot-nacos</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>dubbo-spring-boot-api</module>
-        <module>dubbo-spring-boot-provider</module>
-        <module>dubbo-spring-boot-consumer</module>
+        <module>dubbo-spring-boot-nacos-api</module>
+        <module>dubbo-spring-boot-nacos-provider</module>
+        <module>dubbo-spring-boot-nacos-consumer</module>
     </modules>
 
     <properties>
         <dubbo.version>3.2.6</dubbo.version>
         <spring-boot.version>2.7.8</spring-boot.version>
+        <nacos.version>2.3.0</nacos.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -50,6 +51,13 @@
                 <artifactId>dubbo-dependencies-zookeeper-curator5</artifactId>
                 <version>${dubbo.version}</version>
                 <type>pom</type>
+            </dependency>
+
+            <!-- registry dependency -->
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

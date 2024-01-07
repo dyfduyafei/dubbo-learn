@@ -3,11 +3,11 @@ package com.dyf.springboot.provider;
 import com.dyf.springboot.api.DemoService;
 import org.apache.dubbo.config.annotation.DubboService;
 
-@DubboService(group = "group1",version = "1.0")
-public class DemoServiceImpl implements DemoService {
+@DubboService(group = "group2",version = "2.0")
+public class DemoServiceImplV2 implements DemoService {
 
     @Override
     public String sayHello(String name) {
-        return "Hello " + name;
+        return "ServiceV2: Hello " + name;
     }
 }

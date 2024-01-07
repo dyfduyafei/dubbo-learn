@@ -19,22 +19,44 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class Task implements CommandLineRunner {
 
-    @DubboReference
+    @DubboReference(group = "group1", version = "1.0")
     private DemoService demoService;
+
+    @DubboReference(group = "group2", version = "2.0")
+    private DemoService demoServiceV2;
+
+
     @Override
     public void run(String... args) throws Exception {
+        serviceInvokerTest();
+    }
+
+    private void serviceInvokerTest() {
         String result = demoService.sayHello("world");
         System.out.println("接收到结果====>" + result);
-        new  Thread(()->{
+        new Thread(() -> {
             while (true) {
                 try {
                     TimeUnit.SECONDS.sleep(1);
-                    System.out.println(new Date()+" 接收到结果====>" + demoService.sayHello("world"));
+                    System.out.println(new Date() + "---Task1 接收到结果====>" + demoService.sayHello("world"));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                     Thread.currentThread().interrupt();
                 }
             }
-        }).start();
+        }, "Task1").start();
+
+        new Thread(() -> {
+            while (true) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                    System.out.println(new Date() + "---Task2 接收到结果====>" + demoServiceV2.sayHello("world"));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }, "Task2").start();
     }
+
 }

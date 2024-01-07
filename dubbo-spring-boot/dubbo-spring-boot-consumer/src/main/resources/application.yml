@@ -1,6 +1,8 @@
+server:
+  port: 9081
 dubbo:
   application:
-    name: dubbo-spring-boot-provider
+    name: dubbo-spring-boot-consumer
   protocol:
     name: dubbo
     port: -1

@@ -8,6 +8,6 @@ package com.dyf.springboot.api;
  * @author duyafei
  * @since 2024-01-07
  */
-public interface DemoService {
-    String sayHello(String name);
+public interface ContextService {
+    String invoke(String param);
 }

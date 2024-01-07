@@ -2,9 +2,11 @@ server:
   port: 9081
 dubbo:
   application:
-    name: dubbo-spring-boot-provider
+    name: dubbo-spring-boot-nacos-consumer
+    qos-enable: true
+    qos-port: 33333
   protocol:
     name: dubbo
     port: -1
   registry:
-    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+    address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=nacos
